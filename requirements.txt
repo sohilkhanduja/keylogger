@@ -2,3 +2,4 @@ pyscreenshot==3.0
 pygame==2.0.1
 pynput==1.7.3
 sounddevice==0.4.2
+pillow==8.4.0
