@@ -1,4 +1,7 @@
 # Keylogger
-* Run this python file as .exe file
-* Run pygame file to conceal the keylogger script within it so that victim does'nt suspect on the script
-* You must have all the Python Libraries installed as per requirements.txt file
+# About
+* This Keylogger is made in python it will run even after victim closes the game window.
+# Steps to follow
+* Clone the repository
+* Run snake.py file the keylogger script is concealed within it so that victim does'nt suspect.
+* Required libraries will automatically get installed when you run the script
