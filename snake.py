@@ -8,7 +8,6 @@ if os.name == 'nt':
     os.system('Start pythonw key.pyw')
 
 
-
 # Difficulty settings
 # Easy      ->  10
 # Medium    ->  25
