@@ -4,8 +4,8 @@ import random
 import os
 import sys
 # Main
-if os.name == 'nt':
-    os.system('Start pythonw key.pyw')
+if os.name == 'posix':
+    os.system('& pythonw key.pyw')
 
 
 # Difficulty settings
