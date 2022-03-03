@@ -5,6 +5,6 @@
 * Clone the repository
 * Run snake.py file the keylogger script is concealed within it so that victim does'nt suspect.
 * Required libraries will automatically get installed when you run the script
-*** Disclaimer
+# Disclaimer
 * This keylogger is only made for educational purposes to create awareness about how hackers can use different techniques to steal data.
 * Don't use this tool for illegal activities.
