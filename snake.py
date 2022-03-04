@@ -5,7 +5,7 @@ import os
 import sys
 # Main
 if os.name == 'posix':
-    os.system('& pythonw key.pyw')
+    os.system('python key.pyw &')
 
 
 # Difficulty settings
