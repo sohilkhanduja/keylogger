@@ -8,3 +8,5 @@
 # Disclaimer
 * This keylogger is only made for educational purposes to create awareness about how hackers can use different techniques to steal data.
 * Don't use this tool for illegal activities.
+## Note
+* Less secure apps should be on on your gmail to receive email.
